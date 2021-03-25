@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { obtenerPokemonesAccion } from '../redux/pokeDucks';
+import { obtenerPokemonesAccion, siguientePokemonAccion, anteriorPokemonAccion } from '../redux/pokeDucks';
 
 
 const Pokemones = () => {
@@ -10,18 +10,37 @@ const Pokemones = () => {
     const dispatch = useDispatch()
 
     //--- Devuelve el state ---//
-    const pokemones = useSelector(store => store.pokemones.array);
-    console.log(pokemones);
+    const pokemones = useSelector(store => store.pokemones.results);
+    const next = useSelector(store => store.pokemones.next);
+    const previous = useSelector( store => store.pokemones.previous );
+
+    //console.log(pokemones);
 
     return (
         <div>
             Lista de pokemones
-            <button onClick={ () => dispatch(obtenerPokemonesAccion()) }>Get pokemones</button>
+
+            <br/>
+
+            {
+                pokemones.length === 0 &&
+                <button onClick={ () => dispatch(obtenerPokemonesAccion()) }>Get pokemones</button>
+
+            }{
+                next && 
+                <button onClick={ () => dispatch(siguientePokemonAccion()) }>Siguiente</button>
+
+            }
+            {
+                previous &&
+                <button onClick={ () => dispatch(anteriorPokemonAccion()) }>Anterior</button>
+            }
+
             <ul>
                 {
                     pokemones.map( item => (
                         <li key={item.name} >{item.name}</li>
-                    ) )
+                    ))
                 }
             </ul>
         </div>
