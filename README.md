@@ -1,8 +1,6 @@
-# Instalaciones
-### `npm i redux`  `npm i react-redux`
-### `npm i redux-devtools`
-### `npm i redux-thunk`
-### `npm i axios`
+### Instalaciones
+### `npm i redux`  `npm i react-redux``npm i redux-devtools`
+### `npm i redux-thunk` `npm i axios`
 
 ### Deployment
 ### Link del Proyecto: https://quizzical-wilson-afa548.netlify.app/
