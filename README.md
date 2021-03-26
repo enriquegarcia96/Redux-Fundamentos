@@ -5,7 +5,11 @@
 ### `npm i redux-thunk`
 ### `npm i axios`
 
+### Deployment
+Link del Proyecto: https://quizzical-wilson-afa548.netlify.app/
 
+#### Imagenes de que trata el proyecto
+![image](https://user-images.githubusercontent.com/46203192/112576236-87189980-8db7-11eb-9841-31d26234f87d.png)
 
 
 
@@ -21,14 +25,3 @@ In the project directory, you can run:
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-
-
-
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
