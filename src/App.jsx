@@ -1,23 +1,25 @@
 import React from 'react';
 import Pokemones from './components/Pokemones';
+import Login from './components/Login';
+import Navbar from './components/Navbar';
 
-import {Provider} from 'react-redux';
-import generateStore from './redux/store';
-
+import { BrowserRouter as Router, Switch, Route }  from 'react-router-dom';
 
 function App() {
 
-  const store = generateStore()
-
-
-  return (
-
-    <Provider store={store}>
+  return (  
+    <Router>
         <div className="container mt-3">
-            <Pokemones /> 
-        </div>
-      </Provider>
 
+            <Navbar />
+
+            <Switch>
+              <Route component={Pokemones} path="/" exact/>
+              <Route component={Login} path="/login" />    
+            </Switch>
+
+        </div>
+    </Router>
   );
 }
 
