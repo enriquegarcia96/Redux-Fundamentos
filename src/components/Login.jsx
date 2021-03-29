@@ -1,10 +1,36 @@
 import React from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { ingresoUsuarioAcccion } from '../redux/usuarioDuck';//la accion
 
-const Login = () => {
+import { withRouter } from 'react-router-dom'
+
+
+const Login = ( props ) => {
 
     const dispatch = useDispatch();
+
+    //--- Llamo a la tienda store y llamo a su propiedades ---//
+    const loading = useSelector(store => store.usuario.loading);
+    //console.log(loading);
+
+    //--- Llamo a la tienda store y llamo a su propiedades ---//
+    const activo = useSelector(store => store.usuario.activo);
+    //console.log(activo);
+
+
+    /** 
+     * El useEffect me sirve para dar un seguimiento 
+     * de algun dato
+     */
+    React.useEffect( () => {
+        //console.log(activo)
+
+        if (activo) {
+
+            //--- lo mando a la pagina de inicio ---//
+            props.history.push('/');
+        }
+    }, [activo])
 
 
     return (
@@ -14,6 +40,7 @@ const Login = () => {
             <button 
                 className="btn btn-primary text-uppercase fab fa-google "
                 onClick={ () => dispatch(ingresoUsuarioAcccion())}
+                disabled={loading}
             > Acceder
             </button>
             
@@ -21,4 +48,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default withRouter(Login);

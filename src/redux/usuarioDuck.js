@@ -11,20 +11,22 @@ const dataInicial = {
 const LOADING = 'LOADING';
 const USUARIO_ERROR = 'USUARIO_ERROR';
 const USUARIO_EXITO = 'USUARIO_EXITO';
-
+const CERRAR_SESION = 'CERRAR_SESION';
 
 //--- reducer ---//
 export default function usuarioReducer ( state = dataInicial, action ) {
     switch (action.type) {
+
         case LOADING:
                 return {...state, loading: true}
         case USUARIO_ERROR:
             return {...dataInicial}
         case USUARIO_EXITO:
-            return {...state, loading: false, user: action.payload}
+            return {...state, loading: false, user: action.payload, activo: true}
+        case CERRAR_SESION:
+            return {...dataInicial}
         default:
-            return {...state}
-            
+            return {...state}    
     }
 }
 
@@ -76,4 +78,15 @@ export const leerUsuarioActivoAccion = () => ( dispatch ) => {
         })
     }
 
+}
+
+//--- para cerrar sesion ---//
+export const cerrarSesionAccion = () => ( dispacth ) => {
+    auth.signOut();
+
+   //--- elimino el usuario que quedo guardado en LocalStorage ---//
+    localStorage.removeItem('usuario');
+    dispacth({
+        type: CERRAR_SESION
+    })
 }
