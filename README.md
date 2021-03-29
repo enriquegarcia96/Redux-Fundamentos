@@ -1,3 +1,5 @@
+## Proyecto con Redux - fundamentos, Redux + Auth con Google
+
 # Instalaciones
 ### `npm i redux`  `npm i react-redux` `npm i redux-devtools`
 ### `npm i redux-thunk` `npm i axios` `npm i firebase` `npm i react-router-dom`
@@ -8,7 +10,10 @@
 ## Link del Proyecto: https://quizzical-wilson-afa548.netlify.app/
 
 # Imagenes de que trata el proyecto
-![image](https://user-images.githubusercontent.com/46203192/112576236-87189980-8db7-11eb-9841-31d26234f87d.png)
+![image](https://user-images.githubusercontent.com/46203192/112895682-a6a31100-909a-11eb-9ce0-73db688d289d.png)
+![image](https://user-images.githubusercontent.com/46203192/112895926-fb468c00-909a-11eb-9abb-cea340e38c9a.png)
+![image](https://user-images.githubusercontent.com/46203192/112896012-1ca77800-909b-11eb-95ae-903e23b57ac5.png)
+
 
 
 
