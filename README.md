@@ -14,6 +14,7 @@
 
 # Cambia el nombre del usuario y la imagen desde firebase
 ![image](https://user-images.githubusercontent.com/46203192/113070684-66b65980-9180-11eb-9e9d-99f68b23297d.png)
+![image](https://user-images.githubusercontent.com/46203192/113071287-a92c6600-9181-11eb-973e-754a11977701.png)
 ![image](https://user-images.githubusercontent.com/46203192/113070720-7a61c000-9180-11eb-8bd5-9e4c2fd6babf.png)
 ![image](https://user-images.githubusercontent.com/46203192/113070757-91a0ad80-9180-11eb-920c-263b5592fbe3.png)
 
