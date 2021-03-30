@@ -1,19 +1,19 @@
-import {auth, firebase, db} from '../firebase';
+import {auth, firebase, db, storage} from '../firebase';
 
-//--- Data inicial ---//
+//*--- Data inicial ---//
 const dataInicial = {
     loading: false,
     activo: false
 }
 
 
-//--- types ---//
+//*--- types ---//
 const LOADING = 'LOADING';
 const USUARIO_ERROR = 'USUARIO_ERROR';
 const USUARIO_EXITO = 'USUARIO_EXITO';
 const CERRAR_SESION = 'CERRAR_SESION';
 
-//--- reducer ---//
+//*--- reducer ---//
 export default function usuarioReducer ( state = dataInicial, action ) {
     switch (action.type) {
 
@@ -31,7 +31,7 @@ export default function usuarioReducer ( state = dataInicial, action ) {
 }
 
 
-//--- action ---//
+//*--- action ---//
 export const ingresoUsuarioAcccion = () => async( dispatch ) =>{
 
     dispatch({
@@ -112,4 +112,90 @@ export const cerrarSesionAccion = () => ( dispacth ) => {
     dispacth({
         type: CERRAR_SESION
     })
+}
+
+
+//--- Creacion de accion de Actualizar NOMBRE al Usuario ---//
+export const actualizarUsuarioAccion = ( nombreActualizado ) => async ( dispacth, getState ) =>{
+
+    //--- accion para consumir a una base de datos ---//
+    dispacth({
+        type: LOADING
+    })
+
+    //-- accedo al objeto usuario ---//
+    const { user } = getState().usuario;
+    //console.log(user);
+    
+    try {
+
+        //--- para actualizar el nombre en firebase ---//
+        await db.collection('usuarios').doc(user.email).update({
+            displayName: nombreActualizado
+        })
+        
+        const usuario = {
+            //copia del objeto usuario
+            ...user,
+            displayName: nombreActualizado
+        }
+
+        dispacth({
+            type: USUARIO_EXITO,
+            payload: usuario
+        });
+
+        localStorage.setItem('usuario', JSON.stringify(usuario));
+
+    } catch (error) {
+        console.log(error);
+    }
+
+}
+
+//--- Creacion de accion de Actualizar IMAGEN al Usuario ---//
+export const editarFotoAccion = ( imagenEditada ) => async ( dispacth, getState ) => {
+
+    //--- accion para consumir a una base de datos ---//
+    dispacth({
+        type: LOADING
+    })
+
+    const { user } = getState().usuario
+
+    try {
+
+        //--- crea la carpeta; para hacer la referencia donde estara guardada la imagen  ---///
+        const imagenRef = await storage.ref().child(user.email).child('foto perfil');
+        //---                                  ^Nombre de la carpeta en Firebase  ---///
+
+        //--- para mandar la imagen  a la base de datos de firebase ---//
+        await imagenRef.put(imagenEditada)
+
+        //--- obtengo la URL de la imagen ---//
+        const imagenURL = await imagenRef.getDownloadURL();
+        
+        //--- guardo la imagen en FireStore ---//
+        await db.collection('usuarios').doc(user.email).update({
+            photoURL: imagenURL
+        })
+
+        //--- construyo nuevamete el objeto usuario ---//
+        const usuario = {
+            ...user,
+            photoURL: imagenURL
+        }
+
+        //--- para guardar  Dispatch de la Tienda ---//
+        dispacth({
+            type: USUARIO_EXITO,
+            payload: usuario //mando el objeto la nueva imagen
+        })
+
+        localStorage.setItem('usuario', JSON.stringify(usuario));
+    } catch (error) {
+        console.log(error);
+    }
+
+
 }
