@@ -30,7 +30,7 @@ const Login = ( props ) => {
             //--- lo mando a la pagina de inicio ---//
             props.history.push('/');
         }
-    }, [activo])
+    }, [activo,props.history])
 
 
     return (

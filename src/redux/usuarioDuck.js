@@ -1,4 +1,4 @@
-import {auth, firebase} from '../firebase';
+import {auth, firebase, db} from '../firebase';
 
 //--- Data inicial ---//
 const dataInicial = {
@@ -42,27 +42,50 @@ export const ingresoUsuarioAcccion = () => async( dispatch ) =>{
 
         const provider = new firebase.auth.GoogleAuthProvider();
         const res = await auth.signInWithPopup(provider);
-        //console.log(res);
-        dispatch({
-            type: USUARIO_EXITO,
-            payload: {
-                uid: res.user.uid,
-                email: res.user.email
-            }
-        })
-        //--- Lo guardo en el localStorage
-        localStorage.setItem('usuario', JSON.stringify({
+        console.log(res.user);
+
+        //--- creo un objeto del usuario que viene de google --//
+        const usuario = {
+
             uid: res.user.uid,
-            email: res.user.email
-        }));
+            email: res.user.email,
+            displayName: res.user.displayName,
+            photoURL: res.user.photoURL
 
+        }
 
+        //--- Creo una colecion con el nombre de: usuarios ---//
+        const usuarioDB = await db.collection('usuarios').doc(usuario.email).get();
+        console.log(usuarioDB);
+        
+        //--- Preguntar si existe ese usuario en la base de datos de Firebase ---//
+        if (usuarioDB.exists) {
+            
+            //--- Cuando existe el usuario en fireStore ---//
+            dispatch({
+                type: USUARIO_EXITO,
+                payload: usuarioDB.data()
+            })
+            //--- Lo guardo en el localStorage
+            localStorage.setItem('usuario',JSON.stringify(usuarioDB.data()))
+
+        } else {
+            //--- No exista el usuario en fireStore ---//
+            await db.collection('usuarios').doc(usuario.email).set(usuario);
+
+            dispatch({
+                type: USUARIO_EXITO,
+                payload: usuario
+            })
+            //--- Lo guardo en el localStorage
+            localStorage.setItem('usuario',JSON.stringify(usuario))
+        }
+    
     } catch (error) {
         console.log(error);
 
         dispatch({
-            type: USUARIO_ERROR,
-            
+            type: USUARIO_ERROR
         })
 
     }
