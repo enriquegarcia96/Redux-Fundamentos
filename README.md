@@ -1,4 +1,4 @@
-## Proyecto con Redux - fundamentos, Redux + Auth con Google, Usando la API de Pokemones, Protegiendo una Ruta 
+## Proyecto con Redux - fundamentos, Redux + Auth con Google, Usando la API de Pokemones, Protegiendo una Ruta, manejo de imagenes a la base de datos de firebase y manejo de Storage de firebase.
 
 # Instalaciones
 ### `npm i redux`  `npm i react-redux` `npm i redux-devtools`
