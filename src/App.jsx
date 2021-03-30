@@ -1,8 +1,10 @@
 import React from 'react';
-import Pokemones from './components/Pokemones';
 import Login from './components/Login';
 import Navbar from './components/Navbar';
 import { auth } from './firebase';
+
+import Perfil from './components/Perfil';
+import Pokemones from './components/Pokemones';
 
 import { BrowserRouter as Router, Switch, Route, Redirect }  from 'react-router-dom';
 
@@ -46,9 +48,7 @@ function App() {
       return <Redirect to="/login" {...rest}  />
     }
   }
-
   
-
   return firebaseUser !== false ? (  
     <Router>
         <div className="container mt-3">
@@ -57,6 +57,7 @@ function App() {
 
             <Switch>
               <RutaPrivada component={Pokemones} path="/" exact/>
+              <RutaPrivada component={Perfil} path="/perfil" exact/>
               <Route component={Login} path="/login" />    
             </Switch>
 
