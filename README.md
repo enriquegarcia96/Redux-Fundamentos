@@ -1,3 +1,5 @@
+Proyecto con REACT-REDUX ⚛️ y FIREBASE
+
 ## Proyecto con Redux - fundamentos, Redux + Auth con Google, Usando la API de Pokemones, Protegiendo una Ruta, manejo de imagenes a la base de datos de firebase y manejo de Storage de firebase y el LocalStorage.
 
 # Instalaciones
