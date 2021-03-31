@@ -1,4 +1,6 @@
-## oyecto con REACT-REDUX ⚛️ y FIREBASE
+## Proyecto CON REACT-REDUX ⚛️ Y FIREBASE ![google_firebase_icon-icons com_61475 (1)](https://user-images.githubusercontent.com/46203192/113080411-1ba64180-9194-11eb-9fe3-ad32717c471e.png)
+
+
 
 ## Proyecto con Redux - fundamentos, Redux + Auth con Google, Usando la API de Pokemones, Protegiendo una Ruta, manejo de imagenes a la base de datos de firebase y manejo de Storage de firebase y el LocalStorage.
 
@@ -35,3 +37,4 @@ In the project directory, you can run:
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
