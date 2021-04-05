@@ -1,4 +1,4 @@
-## Proyecto CON REACT-REDUX ⚛️ Y FIREBASE ![google_firebase_icon-icons com_61475 (1)](https://user-images.githubusercontent.com/46203192/113080411-1ba64180-9194-11eb-9fe3-ad32717c471e.png)
+## PROYECTO CON REACT-REDUX ⚛️ Y FIREBASE ![google_firebase_icon-icons com_61475 (1)](https://user-images.githubusercontent.com/46203192/113080411-1ba64180-9194-11eb-9fe3-ad32717c471e.png)
 
 
 
